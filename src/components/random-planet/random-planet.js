@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SwapiService from '../../services/swapi-service';
 import Spinner from '../spinner';
+import ErrorIndicator from '../error-indicator';
 
 import './random-planet.css';
 
@@ -9,6 +10,7 @@ export default class RandomPlanet extends Component {
   state = {
     planet: {},
     loading: true,
+    error: false,
   };
 
   swapiService = new SwapiService();
@@ -20,11 +22,19 @@ export default class RandomPlanet extends Component {
     });
   };
 
+  onError = () => {
+    this.setState({
+      loading: false,
+      error: true,
+    });
+  };
+
   updatePlanet = () => {
-    const id = Math.floor(Math.random()*25) + 2;
+    const id = 12000;
     this.swapiService
       .getPlanet(id)
-      .then(this.onPlanetLoaded);
+      .then(this.onPlanetLoaded)
+      .catch(this.onError);
   };
 
   constructor() {
@@ -33,16 +43,17 @@ export default class RandomPlanet extends Component {
   }
 
   render() {
-    
-    const { planet, loading } = this.state;
+    const { planet, loading, error } = this.state;
+    const hasData = !(error || loading);
+    const errorMessage = error ? <ErrorIndicator /> : null;
     const spinner = loading ? <Spinner /> : null;
-    const content = !loading ? <PlanetView planet = { planet } /> : null;
+    const content = hasData ? <PlanetView planet = { planet } /> : null;
     return (
       <div className="random-planet jumbotron rounded">
-        { spinner };
-        { content };
+        { errorMessage }
+        { spinner }
+        { content }
       </div>
-
     );
   }
 }
@@ -57,8 +68,10 @@ const PlanetView = ({ planet }) => {
   } = planet;
   return (
     <React.Fragment>
-      <img className="planet-image"
-             src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`} />
+      <img 
+        className="planet-image"
+        src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`} 
+        alt = "Random planet"/>
         <div>
           <h4>{name}</h4>
           <ul className="list-group list-group-flush">
