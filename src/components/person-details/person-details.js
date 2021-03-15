@@ -66,7 +66,6 @@ const PersonContent = (props) => {
     birthYear,
     eyeColor,
   } = props.person;
-  console.log(name);
   return (
     <React.Fragment>
       <img 
