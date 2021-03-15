@@ -10,7 +10,7 @@ import './app.css';
 export default class App extends Component {
   state = {
     showRandomPlanet: true,
-    selectedPerson: null,
+    selectedPerson: 1,
   };
 
   toggleRandomPlanet = () => {
@@ -32,7 +32,7 @@ export default class App extends Component {
       <RandomPlanet /> : 
       null;
     return (
-      <div class = "app">
+      <div className = "app">
         <Header />
         { randomPlanet }
   
