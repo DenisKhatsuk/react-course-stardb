@@ -5,6 +5,7 @@ import PersonDetails from '../person-details';
 import ErrorButton from '../error-button';
 import ErrorIndicator from '../error-indicator';
 import SwapiService from '../../services/swapi-service';
+import Row from '../row';
 
 import './people-page.css';
 
@@ -36,19 +37,21 @@ export default class PeoplePage extends Component {
         </div>
       );
     };
-    return (
-      <div className="row mb2">
-        <div className="col-md-6">
-          <ItemList
+
+    const itemList = (
+      <ItemList
             onItemSelected = { this.onPersonSelected }
             getData = { this.swapiService.getAllPeople }
-            renderItem = { ({ name, gender, birthYear }) => `${name} - [Gender: ${gender}, Birth Year: ${birthYear}]` } />
-        </div>
-        <div className="col-md-6">
-          <PersonDetails personId = { this.state.selectedPerson }/>
-          <ErrorButton />
-        </div>
-      </div>
+            renderItem = { ({ name }) => name } />
+    );
+    const itemDetails = (
+      <React.Fragment>
+        <PersonDetails personId = { this.state.selectedPerson }/>
+        <ErrorButton />
+      </React.Fragment>
+    );
+    return (
+      <Row leftElement = { itemList } rightElement = { itemDetails }/>
     );
   };
 }
