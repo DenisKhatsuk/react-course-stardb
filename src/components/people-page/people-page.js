@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 
-import ItemList from '../item-list';
-import PersonDetails from '../person-details';
-import ErrorButton from '../error-button';
+// import ItemList from '../item-list';
+import ItemDetails from '../item-details';
 import ErrorBoundary from '../error-boundary';
 import SwapiService from '../../services/swapi-service';
 import Row from '../row';
@@ -23,24 +22,40 @@ export default class PeoplePage extends Component {
   }; 
   
   render() {
-    const itemList = (
+    // const itemList = (
+    //   <ErrorBoundary>
+    //     <ItemList
+    //           onItemSelected = { this.onPersonSelected }
+    //           getData = { this.swapiService.getAllPeople }
+    //     >
+    //       {(i) => `${i.name}, born in ${i.birthYear}` } 
+    //     </ItemList>
+    //   </ErrorBoundary>
+    // );
+    const { 
+      getPerson, 
+      getStarship, 
+      getPersonImageUrl, 
+      getStarshipImageUrl
+    } = this.swapiService;
+    const peopleDetails = (
       <ErrorBoundary>
-        <ItemList
-              onItemSelected = { this.onPersonSelected }
-              getData = { this.swapiService.getAllPeople }
-        >
-          {(i) => `${i.name}, born in ${i.birthYear}` } 
-        </ItemList>
+        <ItemDetails 
+          itemId = { 14 } 
+          getData = { getPerson }
+          getImageUrl = { getPersonImageUrl } />
       </ErrorBoundary>
     );
-    const itemDetails = (
+    const starshipDetails = (
       <ErrorBoundary>
-        <PersonDetails personId = { this.state.selectedPerson }/>
-        <ErrorButton />
+        <ItemDetails 
+          itemId = { 5 }
+          getData = { getStarship }
+          getImageUrl = { getStarshipImageUrl } />
       </ErrorBoundary>
     );
     return (
-      <Row leftElement = { itemList } rightElement = { itemDetails }/>
+      <Row leftElement = { peopleDetails } rightElement = { starshipDetails }/>
     );
   };
 }

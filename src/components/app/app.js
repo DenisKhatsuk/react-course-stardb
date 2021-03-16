@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 
 import Header from '../header';
-import RandomPlanet from '../random-planet';
-import ErrorButton from '../error-button';
+// import RandomPlanet from '../random-planet';
+// import ErrorButton from '../error-button';
 import ErrorIndicator from '../error-indicator';
 import PeoplePage from '../people-page';
 import SwapiService from '../../services/swapi-service';
-import ItemList from '../item-list';
-import PersonDetails from '../person-details';
 
 import './app.css';
 
@@ -41,13 +39,13 @@ export default class App extends Component {
         </div>
       );
     };
-    const randomPlanet = this.state.showRandomPlanet ? 
-      <RandomPlanet /> : 
-      null;
+    // const randomPlanet = this.state.showRandomPlanet ? 
+    //   <RandomPlanet /> : 
+    //   null;
     return (
       <div className = "app">
         <Header />
-        { randomPlanet }
+        {/* { randomPlanet }
   
         <button
           className="toggle-planet btn btn-warning btn-lg"
@@ -55,7 +53,7 @@ export default class App extends Component {
           Toggle Random Planet
         </button>
 
-        <ErrorButton />
+        <ErrorButton /> */}
   
         <PeoplePage />
       </div>
