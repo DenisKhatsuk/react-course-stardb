@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 // import ItemList from '../item-list';
-import ItemDetails from '../item-details';
+import ItemDetails, { Record } from '../item-details';
 import ErrorBoundary from '../error-boundary';
 import SwapiService from '../../services/swapi-service';
 import Row from '../row';
@@ -43,15 +43,28 @@ export default class PeoplePage extends Component {
         <ItemDetails 
           itemId = { 14 } 
           getData = { getPerson }
-          getImageUrl = { getPersonImageUrl } />
+          getImageUrl = { getPersonImageUrl } >
+
+            <Record field = "gender" label = "Gender:" />
+            <Record field = "birthYear" label = "Birth Year:" />
+            <Record field = "eyeColor" label = "Eye Color:" />
+
+        </ItemDetails>
       </ErrorBoundary>
     );
     const starshipDetails = (
       <ErrorBoundary>
         <ItemDetails 
-          itemId = { 5 }
+          itemId = { 9 }
           getData = { getStarship }
-          getImageUrl = { getStarshipImageUrl } />
+          getImageUrl = { getStarshipImageUrl }>
+
+            <Record field = "model" label = "Model:" />
+            <Record field = "crew" label = "Crew:" />
+            <Record field = "passengers" label = "Passengers:" />
+            <Record field = "cargoCapacity" label = "Cargo capacity:" />
+
+        </ItemDetails>
       </ErrorBoundary>
     );
     return (
