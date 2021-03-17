@@ -61,12 +61,7 @@ export default class ItemDetails extends Component {
         <span>Please select a character from the list</span>
       );
     };
-    const { 
-      name,
-      // gender,
-      // birthYear,
-      // eyeColor,
-    } = item;
+    const { name } = item;
     const itemElement = (
       <React.Fragment>
         <img 
