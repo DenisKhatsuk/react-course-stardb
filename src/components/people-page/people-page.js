@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ErrorBoundary from '../error-boundary';
-import SwapiService from '../../services/swapi-service';
 import Row from '../row';
 import {
   PersonList, 
@@ -14,7 +13,6 @@ import {
 import './people-page.css';
 
 export default class PeoplePage extends Component {
-  swapiService = new SwapiService();
 
   state = {
     selectedPerson: 1,
@@ -44,9 +42,7 @@ export default class PeoplePage extends Component {
     const itemList = (
       <ErrorBoundary>
         <PersonList />
-
         <PlanetList />
-        
         <StarshipList />
       </ErrorBoundary>
     );

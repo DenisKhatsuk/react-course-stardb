@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 
 import Header from '../header';
-// import RandomPlanet from '../random-planet';
-// import ErrorButton from '../error-button';
+import RandomPlanet from '../random-planet';
+import ErrorButton from '../error-button';
 import ErrorIndicator from '../error-indicator';
+import ErrorBoundary from '../error-boundary';
 import PeoplePage from '../people-page';
 import SwapiService from '../../services/swapi-service';
+import { SwapiServiceProvider } from '../swapi-service-context';
 
 import './app.css';
 
@@ -39,23 +41,27 @@ export default class App extends Component {
         </div>
       );
     };
-    // const randomPlanet = this.state.showRandomPlanet ? 
-    //   <RandomPlanet /> : 
-    //   null;
+    const randomPlanet = this.state.showRandomPlanet ? 
+      <RandomPlanet /> : 
+      null;
     return (
-      <div className = "app">
-        <Header />
-        {/* { randomPlanet }
-  
-        <button
-          className="toggle-planet btn btn-warning btn-lg"
-          onClick={this.toggleRandomPlanet}>
-          Toggle Random Planet
-        </button>
+      <div className = "stardb-app">
+        <ErrorBoundary>
+            <SwapiServiceProvider value = { this.swapiService }>
+              <Header />
+              { randomPlanet }
+        
+              <button
+                className="toggle-planet btn btn-warning btn-lg"
+                onClick={this.toggleRandomPlanet}>
+                Toggle Random Planet
+              </button>
 
-        <ErrorButton /> */}
-  
-        <PeoplePage />
+              <ErrorButton />
+        
+              <PeoplePage />
+          </SwapiServiceProvider>
+        </ErrorBoundary>
       </div>
     );
   };
