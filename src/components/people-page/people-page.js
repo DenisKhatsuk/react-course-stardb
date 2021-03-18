@@ -43,17 +43,11 @@ export default class PeoplePage extends Component {
   render() {
     const itemList = (
       <ErrorBoundary>
-        <PersonList>
-          { (i) => `${i.name}, born in ${i.birthYear}` } 
-        </PersonList>
+        <PersonList />
 
-        <PlanetList>
-          { (i) => i.name } 
-        </PlanetList>
+        <PlanetList />
         
-        <StarshipList>
-          { (i) => i.name } 
-        </StarshipList>
+        <StarshipList />
       </ErrorBoundary>
     );
     const itemDetails = (

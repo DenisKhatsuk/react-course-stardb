@@ -1,5 +1,5 @@
 import ItemList from '../item-list';
-import { withData } from '../hoc-helpers';
+import { withData, withChild } from '../hoc-helpers';
 import SwapiService from '../../services/swapi-service';
 
 const swapiService = new SwapiService();
@@ -10,9 +10,20 @@ const {
   getAllStarships,
 } = swapiService;
 
-const PersonList = withData(ItemList, getAllPeople);
-const PlanetList = withData(ItemList, getAllPlanets);
-const StarshipList = withData(ItemList, getAllStarships);
+const renderName = i => i.name;
+const renderNameAndModel = (i) => {
+  return <span>{i.name}, Model: {i.model}</span>;
+}
+
+const PersonList = withData(
+                    withChild(ItemList,renderName), 
+                    getAllPeople);
+const PlanetList = withData(
+                    withChild(ItemList,renderName), 
+                    getAllPlanets);
+const StarshipList = withData(
+                    withChild(ItemList,renderNameAndModel), 
+                    getAllStarships);
 
 export {
   PersonList,
