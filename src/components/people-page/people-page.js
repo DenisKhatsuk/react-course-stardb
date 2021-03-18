@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import ErrorBoundary from '../error-boundary';
 import SwapiService from '../../services/swapi-service';
 import Row from '../row';
@@ -40,6 +39,7 @@ export default class PeoplePage extends Component {
         <PersonList>
           { (i) => `${i.name}, born in ${i.birthYear}` } 
         </PersonList>
+        
         <PlanetList>
           { (i) => i.name } 
         </PlanetList>
@@ -51,7 +51,7 @@ export default class PeoplePage extends Component {
     );
     const itemDetails = (
       <ErrorBoundary>
-        <PersonDetails itemId = { 5 } />
+        <PersonDetails itemId = { 2 } />
         <PlanetDetails itemId = { 5 } />
         <StarshipDetails itemId = { 5 } />
       </ErrorBoundary>
