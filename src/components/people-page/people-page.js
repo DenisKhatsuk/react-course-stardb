@@ -18,7 +18,8 @@ export default class PeoplePage extends Component {
 
   state = {
     selectedPerson: 1,
-    selectedPlanet: 1,
+    selectedPlanet: 3,
+    selectedStarship: 5,
   };
 
   onPersonSelected = (id) => {
@@ -33,13 +34,19 @@ export default class PeoplePage extends Component {
     });
   }; 
   
+  onStarshipSelected = (id) => {
+    this.setState({
+      selectedStarship: id,
+    });
+  }; 
+  
   render() {
     const itemList = (
       <ErrorBoundary>
         <PersonList>
           { (i) => `${i.name}, born in ${i.birthYear}` } 
         </PersonList>
-        
+
         <PlanetList>
           { (i) => i.name } 
         </PlanetList>
@@ -51,9 +58,9 @@ export default class PeoplePage extends Component {
     );
     const itemDetails = (
       <ErrorBoundary>
-        <PersonDetails itemId = { 2 } />
-        <PlanetDetails itemId = { 5 } />
-        <StarshipDetails itemId = { 5 } />
+        <PersonDetails itemId = { this.state.selectedPerson } />
+        <PlanetDetails itemId = { this.state.selectedPlanet } />
+        <StarshipDetails itemId = { this.state.selectedStarship } />
       </ErrorBoundary>
     );
     return (
