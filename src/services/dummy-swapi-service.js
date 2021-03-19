@@ -73,15 +73,15 @@ export default class DummySwapiService {
     return this._starships[0];
   };
 
-  getPersonImage = () => {
+  getPersonImageUrl = () => {
     return `https://placeimg.com/400/500/people`
   };
 
-  getStarshipImage = () => {
+  getStarshipImageUrl = () => {
     return `https://placeimg.com/600/400/tech`;
   };
 
-  getPlanetImage = () => {
+  getPlanetImageUrl = () => {
     return `https://placeimg.com/400/400/nature`
   };
 }

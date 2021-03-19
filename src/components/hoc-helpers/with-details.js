@@ -5,7 +5,7 @@ const withDetails = (View, itemId, getData, getImageUrl) => {
   return class extends Component {
     state = {
       item: null,
-      itemId: itemId,
+      itemId: null,
       image: null,
       isUpdating: false,
     };
@@ -14,8 +14,10 @@ const withDetails = (View, itemId, getData, getImageUrl) => {
       this.updateItem();
     }
     
-    componentDidUpdate(...props) {
-      if (this.state.itemId !== props[1].itemId) {
+    componentDidUpdate(prevProps) {
+      if (this.props.itemId !== prevProps.itemId || 
+        this.props.getData !== prevProps.getData ||
+        this.props.getImageUrl !== prevProps.getImageUrl) {
         this.setState({
           isUpdating: true,
         });

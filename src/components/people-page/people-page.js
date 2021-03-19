@@ -20,23 +20,27 @@ export default class PeoplePage extends Component {
     selectedStarship: 5,
   };
 
-  onPersonSelected = (id) => {
-    this.setState({
-      selectedPerson: id,
-    });
-  }; 
+  componentDidUpdate() {
+    console.log('People page update');
+  }
+
+  // onPersonSelected = (id) => {
+  //   this.setState({
+  //     selectedPerson: id,
+  //   });
+  // }; 
   
-  onPlanetSelected = (id) => {
-    this.setState({
-      selectedPlanet: id,
-    });
-  }; 
+  // onPlanetSelected = (id) => {
+  //   this.setState({
+  //     selectedPlanet: id,
+  //   });
+  // }; 
   
-  onStarshipSelected = (id) => {
-    this.setState({
-      selectedStarship: id,
-    });
-  }; 
+  // onStarshipSelected = (id) => {
+  //   this.setState({
+  //     selectedStarship: id,
+  //   });
+  // }; 
   
   render() {
     const itemList = (
@@ -48,7 +52,7 @@ export default class PeoplePage extends Component {
     );
     const itemDetails = (
       <ErrorBoundary>
-        <PersonDetails itemId = { this.state.selectedPerson } />
+        <PersonDetails itemId = { 3 } />
         <PlanetDetails itemId = { this.state.selectedPlanet } />
         <StarshipDetails itemId = { this.state.selectedStarship } />
       </ErrorBoundary>
