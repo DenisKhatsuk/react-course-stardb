@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import Spinner from '../spinner';
 import ErrorBoundary from '../error-boundary';
+import ErrorIndicator from '../error-indicator';
 
 const withData = (View) => {
   return class extends Component {
     state = {
       data: null,
+      isLoading: true,
+      error: false,
     };
   
     componentDidMount() {
@@ -19,20 +22,37 @@ const withData = (View) => {
     }
 
     update() {
+      this.setState({
+        isLoading: true,
+        error: false,
+      });
       this.props.getData()
       .then((data) => {
         this.setState({
           data,
+          isLoading: false,
+        });
+      })
+      .catch(() => {
+        this.setState({
+          error: true,
+          loading: false,
         });
       });
     }
 
     render() {
-      const { data } = this.state;
+      const { data, isLoading, error } = this.state;
 
-      if (!data) return (
+      if (isLoading) return (
         <ul className="item-list list-group">
           <Spinner />
+        </ul>
+      );
+
+      if (error) return (
+        <ul className="item-list list-group">
+          <ErrorIndicator />
         </ul>
       );
 

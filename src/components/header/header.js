@@ -6,19 +6,19 @@ const Header = ({ onChangeServiceClick }) => {
   return (
     <div className="header d-flex">
       <h3>
-        <a href="#">
+        <a href="#_">
           Star DB
         </a>
       </h3>
       <ul className="d-flex">
         <li>
-          <a href="#">People</a>
+          <a href="#_">People</a>
         </li>
         <li>
-          <a href="#">Planets</a>
+          <a href="#_">Planets</a>
         </li>
         <li>
-          <a href="#">Starships</a>
+          <a href="#_">Starships</a>
         </li>
       </ul>
       <button 
