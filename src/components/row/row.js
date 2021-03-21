@@ -1,6 +1,8 @@
 import React from 'react';
 import ErrorBoundary from '../error-boundary';
 
+import './row.css';
+
 const Row = ({ leftElement, rightElement }) => {
   return (
     <div className="row mb2">
