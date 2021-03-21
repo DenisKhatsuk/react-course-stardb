@@ -15,7 +15,7 @@ export default class App extends Component {
   
   state = {
     hasError: false,
-    service: new SwapiService(),
+    service: new DummySwapiService(),
   };
 
   componentDidCatch() {
