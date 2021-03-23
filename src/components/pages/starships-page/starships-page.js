@@ -21,8 +21,8 @@ export default class StarshipsPage extends Component {
 
     return (
         <Row 
-          leftElement = { <StarshipList onItemSelected = { this.onItemSelected }/> } 
-          rightElement = { <StarshipDetails itemId = { selectedItem } /> }/>
+          leftContent = { <StarshipList onItemSelected = { this.onItemSelected }/> } 
+          rightContent = { <StarshipDetails itemId = { selectedItem } /> }/>
         
     );
   };
