@@ -58,6 +58,10 @@ export default class App extends Component {
                 path = "/" 
                 render = { () => <h2>Welcome to Star DB</h2> }
                 exact />
+              <Route 
+                path = "/people" 
+                render = { () => <h2>Star wars characters</h2> }
+                exact />
               <Route path = "/people" component = { PeoplePage } />
               <Route path = "/planets" component = { PlanetsPage } />
               <Route path = "/starships" component = { StarshipsPage } />
