@@ -51,7 +51,7 @@ export default class App extends Component {
       <ErrorBoundary>
         <SwapiServiceProvider value = { this.state.service }>
           <Router>
-            <div className = "stardb-app">
+            <div className = "stardb-app container">
               <Header onChangeServiceClick = { this.changeService } />
               <RandomPlanet />
 
