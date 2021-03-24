@@ -1,8 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import { StarshipList } from '../../sw-components';
-
-import './starships-page.css';
+import { StarshipList } from '../sw-components';
 
 const StarshipsPage = ({ history }) => {
   return (
